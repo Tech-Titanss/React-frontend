@@ -1,23 +1,39 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
 const ListQuestions = () => {
-  const [questions, setQuestions] = React.useState();
 
-  async function fetchQuestions() {
-    const response = await fetch("localhost:8080/api/kyselies");
-    const data = await response.json();
-    setQuestions(data);
-  }
+  const [surveys, setSurveys] = useState([]);
 
-  React.useEffect(() => {
-    fetchQuestions();
+  useEffect(() => { 
+
+    const fetchSurveys = async () => {
+
+      try {
+
+        const response = await fetch("http://localhost:8080/surveys");
+        const data = await response.json();
+        setSurveys(data);
+
+      }
+
+      catch (error) {
+
+        console.error(error);
+
+      }
+
+    }
+
+    fetchSurveys();
+  
   }, []);
 
   return (
     <div>
-      {data.map((question, index) => (
+      {surveys.map((survey, index) => (
         <div key={index}>
-          <div>{question.nimi}</div>
+          <div>{survey.name}</div>
+          <div>{survey.description}</div>
         </div>
       ))}
     </div>
