@@ -1,7 +1,8 @@
 import ListQuestions from "./Components/ListQuestions";
+import SurveyList from "./Components/SurveyList";
 
 function App() {
-  return <ListQuestions />;
+  return <SurveyList />;
 }
 
 export default App;
