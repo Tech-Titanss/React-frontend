@@ -46,11 +46,11 @@ const AnswerForm = () => {
 
                     {survey.questions.map((question, index) => {
 
-                        <div key={index}>
+                       return (<div key={index}>
 
                             <p>{question.questionText}</p>
 
-                        </div>
+                        </div>)
 
 
                     })}
