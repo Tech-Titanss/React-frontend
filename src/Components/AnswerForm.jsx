@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react';
 
 const AnswerForm = () => {
 
-    const [survey, setSurvey] = useState([])
+    const [survey, setSurvey] = useState([]);
+
+    const [loading, setLoading] = useState(true);
 
     const { id } = useParams();
 
@@ -19,7 +21,7 @@ const AnswerForm = () => {
                 const response = await fetch(`http://localhost:8080/survey/${id}`);
                 const data = await response.json();
                 setSurvey(data);
-                console.log(survey.questions)
+                setLoading(false);
             }
             catch (error) {
 
@@ -37,8 +39,26 @@ const AnswerForm = () => {
             <h1>{survey.name}</h1>
             <h1>{survey.description}</h1>
 
- 
+            {loading ? <p>Loading</p> : (
 
+
+                <div>
+
+                    {survey.questions.map((question, index) => {
+
+                        <div key={index}>
+
+                            <p>{question.questionText}</p>
+
+                        </div>
+
+
+                    })}
+
+
+                </div>
+
+            )}
 
         </>
     )

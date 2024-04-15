@@ -32,7 +32,6 @@ const SurveyList = () => {
                 surveys.map((survey, index) =>
                     <Box key={index} >
                         <SurveyCard survey={survey} />
-                        < AnswerForm survey={surveys[0]} />
                     </Box>
 
                 )
