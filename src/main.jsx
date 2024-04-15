@@ -16,12 +16,12 @@ const router = createBrowserRouter([
         index: true
       },
       {
-        path: "answerform/:id",
+        path: "/answerform/:id",
         element: <AnswerForm />,
-      }
+      },
     ]
   }
-])
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
