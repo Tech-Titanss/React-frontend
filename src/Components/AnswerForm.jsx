@@ -10,6 +10,44 @@ const AnswerForm = () => {
 
     const { id } = useParams();
 
+    const [answers, setAnswers] = useState[{}];
+
+    const handleInputChange = (e) => {
+
+        setAnswers({...answers, [e.target.name]: e.target.value});
+
+    }
+
+    const handleSubmit = async (e) => {
+
+        e.preventDefault();
+
+        try {
+
+            const response = fetch(`http://localhost:8080/saveanswers`, {
+                
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(answers)
+
+        });
+
+        if (!response.ok) {
+
+            throw new Error("Failed to save answers!");
+
+        }
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+        }
+
+    }
+
     useEffect(() => {
 
         console.log(id)
@@ -41,22 +79,17 @@ const AnswerForm = () => {
 
             {loading ? <p>Loading</p> : (
 
-
-                <div>
+                <form onSubmit={handleSubmit}>
 
                     {survey.questions.map((question, index) => {
 
-                       return (<div key={index}>
-
-                            <p>{question.questionText}</p>
-
-                        </div>)
-
+                        return (<label key={index}>{question.questionText}<input type='text' onChange={handleInputChange} name={`${question.id}`}/></label>)
 
                     })}
 
+                    <button type='submit'>submit</button>
 
-                </div>
+                </form>
 
             )}
 
