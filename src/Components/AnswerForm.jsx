@@ -10,7 +10,7 @@ const AnswerForm = () => {
 
     const { id } = useParams();
 
-    const [answers, setAnswers] = useState[{}];
+    const [answers, setAnswers] = useState({});
 
     const handleInputChange = (e) => {
 
@@ -21,6 +21,8 @@ const AnswerForm = () => {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
+
+        console.log(answers)
 
         try {
 
