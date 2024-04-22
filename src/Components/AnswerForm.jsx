@@ -1,4 +1,4 @@
-import { FormControl, TextField, Typography } from '@mui/material';
+import { FormControl, TextField, Typography, Container, Grid, Button, InputLabel } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -14,7 +14,7 @@ const AnswerForm = () => {
 
     const handleInputChange = (e) => {
 
-        setAnswers({...answers, [e.target.name]: e.target.value});
+        setAnswers({ ...answers, [e.target.name]: e.target.value });
 
     }
 
@@ -27,18 +27,18 @@ const AnswerForm = () => {
         try {
 
             const response = fetch(`http://localhost:8080/saveanswers`, {
-                
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(answers)
 
-        });
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(answers)
 
-        if (!response.ok) {
+            });
 
-            throw new Error("Failed to save answers!");
+            if (!response.ok) {
 
-        }
+                throw new Error("Failed to save answers!");
+
+            }
 
         }
 
@@ -75,9 +75,9 @@ const AnswerForm = () => {
 
 
     return (
-        <>
-            <h1>{survey.name}</h1>
-            <h1>{survey.description}</h1>
+        <Container>
+            <Typography variant="h1">{survey.name}</Typography>
+            <Typography variant="h3">{survey.description}</Typography>
 
             {loading ? <p>Loading</p> : (
 
@@ -85,33 +85,40 @@ const AnswerForm = () => {
 
                     {survey.questions.map((question, index) => {
 
-                        if (question.type ==="radio") {
+                        if (question.type === "radio") {
 
-                            {return question.options.map((option, index) => {
+                            {
+                                return question.options.map((option, index) => {
 
-                                return(<label key={index}>{option}<input type='radio' name={`${question.id}`} value={`${option}`} onChange={handleInputChange} /></label>)
+                                    return (
+                                        <Grid key={index}>
+                                            {option}
+                                            <TextField type='radio' name={`${question.id}`} value={`${option}`} onChange={handleInputChange} sx={{ width: 600, marginBottom: 3 }} />
+                                        </Grid>
+                                    )
 
-                            })}
+                                })
+                            }
 
                         }
 
                         else {
-
-                            return (<label style={{display:"block"}} key={index}>{question.questionText}<input type='text' onChange={handleInputChange} name={`${question.id}`}/></label>)
-
+                            return (
+                                <Grid style={{ display: "block" }} key={index}>
+                                    <InputLabel>{question.questionText}</InputLabel>
+                                    <TextField type='text' onChange={handleInputChange} name={`${question.id}`} sx={{ width: 600, marginBottom: 3 }} />
+                                </Grid>
+                            )
                         }
-
-                        
-
                     })}
 
-                    <button type='submit'>submit</button>
+                    <Button variant="contained" type='submit'>submit</Button>
 
                 </form>
 
             )}
 
-        </>
+        </Container>
     )
 }
 

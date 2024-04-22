@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, } from '@mui/material'
+import { Box, Container } from '@mui/material'
 import SurveyCard from "./SurveyCard";
 import AnswerForm from "./AnswerForm";
 
@@ -26,8 +26,8 @@ const SurveyList = () => {
     }, [])
 
     return (
-        <>
-            <h1>Sivun nimi</h1>
+        <Container>
+            <h1>Haaga-Helian kyselyt</h1>
             {
                 surveys.map((survey, index) =>
                     <Box key={index} >
@@ -37,8 +37,7 @@ const SurveyList = () => {
                 )
 
             }
-
-        </>
+        </Container>
     )
 }
 
