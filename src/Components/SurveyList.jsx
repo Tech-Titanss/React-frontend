@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Container } from '@mui/material'
+import { Box, Container, TextField, Typography } from '@mui/material'
 import SurveyCard from "./SurveyCard";
 import AnswerForm from "./AnswerForm";
 
@@ -27,7 +27,7 @@ const SurveyList = () => {
 
     return (
         <Container>
-            <h1>Haaga-Helian kyselyt</h1>
+            <Typography variant="h2">Haaga-Helian kyselyt</Typography>
             {
                 surveys.map((survey, index) =>
                     <Box key={index} >

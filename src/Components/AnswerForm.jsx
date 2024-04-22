@@ -1,4 +1,4 @@
-import { FormControl, TextField, Typography, Container, Grid, Button, InputLabel } from '@mui/material';
+import { FormControl, TextField, Typography, Container, Grid, Button, InputLabel, RadioGroup, Radio, FormControlLabel, FormLabel } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -86,18 +86,24 @@ const AnswerForm = () => {
                     {survey.questions.map((question, index) => {
 
                         if (question.type === "radio") {
-
                             {
-                                return question.options.map((option, index) => {
+                                return (
 
-                                    return (
-                                        <Grid key={index}>
-                                            {option}
-                                            <TextField type='radio' name={`${question.id}`} value={`${option}`} onChange={handleInputChange} sx={{ width: 600, marginBottom: 3 }} />
-                                        </Grid>
-                                    )
+                                    question.options.map((option, index) => {
 
-                                })
+                                        return (
+                                            <>
+                                                <FormLabel>{question.questionText}</FormLabel>
+                                                <Grid>
+                                                    <RadioGroup key={index}>
+                                                        <FormControlLabel type='radio' control={<Radio />} name={`${question.id}`} value={`${option}`} label={option} onChange={handleInputChange} />
+                                                    </RadioGroup>
+                                                </Grid>
+                                            </>
+                                        )
+                                    })
+
+                                )
                             }
 
                         }

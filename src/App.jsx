@@ -17,7 +17,10 @@ const theme = createTheme({
     text: {
       primary: '#003049',
       secondary: '#4c87a0',
-    }
+    },
+    typography: {
+      fontFamily: "'Roboto', sans-serif'",
+    },
   }
 });
 
