@@ -11,6 +11,9 @@ const SurveyCard = (props) => {
                 <Link to={`/answerform/${props.survey.id}`}>
                     <Button sx={{ marginLeft: 2 }} variant="contained">Avaa</Button>
                 </Link>
+                <Link to={`/answerform/${props.survey.id}`}>
+                    <Button sx={{ marginLeft: 2 }} variant="contained">Näytä vastaukset</Button>
+                </Link>
             </Card>
         </>
     )
