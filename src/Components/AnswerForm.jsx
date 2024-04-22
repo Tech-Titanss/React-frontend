@@ -85,7 +85,23 @@ const AnswerForm = () => {
 
                     {survey.questions.map((question, index) => {
 
-                        return (<label key={index}>{question.questionText}<input type='text' onChange={handleInputChange} name={`${question.id}`}/></label>)
+                        if (question.type ==="radio") {
+
+                            {return question.options.map((option, index) => {
+
+                                return(<label key={index}>{option}<input type='radio' name={`${question.id}`} value={`${option}`} onChange={handleInputChange} /></label>)
+
+                            })}
+
+                        }
+
+                        else {
+
+                            return (<label style={{display:"block"}} key={index}>{question.questionText}<input type='text' onChange={handleInputChange} name={`${question.id}`}/></label>)
+
+                        }
+
+                        
 
                     })}
 
