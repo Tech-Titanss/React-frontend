@@ -1,7 +1,7 @@
-import { Paper, TextField, Typography, Container, Grid, Button, InputLabel, RadioGroup, Radio, FormControlLabel, Link, Divider } from '@mui/material';
+import { AppBar, Paper, TextField, Typography, Container, Grid, Button, InputLabel, RadioGroup, Radio, FormControlLabel, Link, Divider } from '@mui/material';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { grey } from '@mui/material/colors'
+import { grey, blue } from '@mui/material/colors'
 
 
 const AnswerForm = () => {
@@ -75,10 +75,12 @@ const AnswerForm = () => {
 
     return (
         <Paper sx={{ backgroundColor: grey[50] }} elevation={3}>
+            <AppBar position="static" sx={{ backgroundColor: '#0079c2', height: 130 }}>
+                <Typography variant="h1"
+                    sx={{ textAlign: "center" }}>{survey.name}</Typography>
+            </AppBar>
             <Container>
-
-                <Typography variant="h2">{survey.name}</Typography>
-                <Typography variant="h4" sx={{ marginBottom: 2 }}>{survey.description}</Typography>
+                <Typography variant="h4" sx={{ marginBottom: 4, marginTop: 4 }}>{survey.description}</Typography>
 
                 {loading ? <p>Loading</p> : (
 
