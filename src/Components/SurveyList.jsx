@@ -27,7 +27,7 @@ const SurveyList = () => {
 
     return (
         <Container>
-            <Typography variant="h2">Haaga-Helian kyselyt</Typography>
+            <Typography variant="h2" sx={{ marginBottom: 5 }}>Haaga-Helian kyselyt</Typography>
             {
                 surveys.map((survey, index) =>
                     <Box key={index} >

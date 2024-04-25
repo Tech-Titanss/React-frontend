@@ -1,26 +1,24 @@
-import { AppBar, TextField, Typography, Container, Grid, Button, InputLabel, RadioGroup, Radio, FormControlLabel, FormLabel } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { Paper, TextField, Typography, Container, Grid, Button, InputLabel, RadioGroup, Radio, FormControlLabel, Link, Divider } from '@mui/material';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { grey } from '@mui/material/colors'
 
 
 const AnswerForm = () => {
-
+    const navigate = useNavigate();
     const [survey, setSurvey] = useState([]);
-
     const [loading, setLoading] = useState(true);
-
     const { id } = useParams();
-
     const [answers, setAnswers] = useState({});
-
     const handleInputChange = (e) => {
+
 
         setAnswers({ ...answers, [e.target.name]: e.target.value });
 
     }
 
     const handleSubmit = async (e) => {
-
+        navigate('/')
         e.preventDefault();
 
         console.log(answers)
@@ -76,58 +74,60 @@ const AnswerForm = () => {
 
 
     return (
-        <Container>
+        <Paper sx={{ backgroundColor: grey[50] }} elevation={3}>
+            <Container>
 
-            <Typography variant="h1">{survey.name}</Typography>
-            <Typography variant="h3">{survey.description}</Typography>
+                <Typography variant="h2">{survey.name}</Typography>
+                <Typography variant="h4" sx={{ marginBottom: 2 }}>{survey.description}</Typography>
 
-            {loading ? <p>Loading</p> : (
+                {loading ? <p>Loading</p> : (
 
-                <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
 
-                    {survey.questions.map((question, index) => {
+                        {survey.questions.map((question, index) => {
 
-                        if (question.type === "radio") {
-                            {
-                                return (
-                                    <>
-                                        <Typography variant="body">{question.questionText}</Typography>
-                                        {question.options.map((option, index) => {
+                            if (question.type === "radio") {
+                                {
+                                    return (
+                                        <>
+                                            <Typography sx={{ marginTop: 2 }}>{question.questionText}</Typography>
+                                            {question.options.map((option, index) => {
 
-                                            return (
-                                                <>
+                                                return (
+                                                    <>
 
-                                                    <Grid>
-                                                        <RadioGroup key={index}>
-                                                            <FormControlLabel type='radio' control={<Radio />} name={`${question.id}`} value={`${option}`} label={option} onChange={handleInputChange} />
-                                                        </RadioGroup>
-                                                    </Grid>
-                                                </>
-                                            )
-                                        })
-                                        }
-                                    </>)
+                                                        <Grid key={index}>
+                                                            <RadioGroup >
+                                                                <FormControlLabel type='radio' control={<Radio />} name={`${question.id}`} value={`${option}`} label={option} onChange={handleInputChange} />
+                                                            </RadioGroup>
+                                                        </Grid>
+                                                    </>
+                                                )
+                                            })
+                                            }
+                                        </>)
+                                }
+
                             }
 
-                        }
+                            else {
+                                return (
+                                    <Grid style={{ display: "block" }} key={index}>
+                                        <InputLabel>{question.questionText}</InputLabel>
+                                        <TextField type='text' onChange={handleInputChange} name={`${question.id}`} sx={{ width: 600, marginBottom: 3 }} />
+                                    </Grid>
+                                )
+                            }
+                        })}
+                        <Link to='/'>
+                            <Button sx={{ marginTop: 5, marginBottom: 2 }} variant="contained" type='submit'>submit</Button>
+                        </Link>
+                    </form>
 
-                        else {
-                            return (
-                                <Grid style={{ display: "block" }} key={index}>
-                                    <InputLabel>{question.questionText}</InputLabel>
-                                    <TextField type='text' onChange={handleInputChange} name={`${question.id}`} sx={{ width: 600, marginBottom: 3 }} />
-                                </Grid>
-                            )
-                        }
-                    })}
+                )}
 
-                    <Button variant="contained" type='submit'>submit</Button>
-
-                </form>
-
-            )}
-
-        </Container>
+            </Container>
+        </Paper>
     )
 }
 
