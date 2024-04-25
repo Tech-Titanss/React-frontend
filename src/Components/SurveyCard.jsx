@@ -8,10 +8,10 @@ const SurveyCard = (props) => {
         <>
             <Card style={{ width: 600, height: 150, backgroundColor: grey[100], marginBottom: 20 }}>
                 <CardHeader title={props.survey.name} subheader={props.survey.description} />
-                <Link to={`/answerform/${props.survey.id}`}>
+                <Link to={`answerform/${props.survey.id}`}>
                     <Button sx={{ marginLeft: 2 }} variant="contained">Avaa</Button>
                 </Link>
-                <Link to={`/answerform/${props.survey.id}`}>
+                <Link to={`answerlist/${props.survey.id}`}>
                     <Button sx={{ marginLeft: 2 }} variant="contained">Näytä vastaukset</Button>
                 </Link>
             </Card>

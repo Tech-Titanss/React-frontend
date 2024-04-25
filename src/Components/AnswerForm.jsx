@@ -90,22 +90,23 @@ const AnswerForm = () => {
                         if (question.type === "radio") {
                             {
                                 return (
+                                    <>
+                                        <Typography variant="body">{question.questionText}</Typography>
+                                        {question.options.map((option, index) => {
 
-                                    question.options.map((option, index) => {
+                                            return (
+                                                <>
 
-                                        return (
-                                            <>
-                                                <FormLabel>{question.questionText}</FormLabel>
-                                                <Grid>
-                                                    <RadioGroup key={index}>
-                                                        <FormControlLabel type='radio' control={<Radio />} name={`${question.id}`} value={`${option}`} label={option} onChange={handleInputChange} />
-                                                    </RadioGroup>
-                                                </Grid>
-                                            </>
-                                        )
-                                    })
-
-                                )
+                                                    <Grid>
+                                                        <RadioGroup key={index}>
+                                                            <FormControlLabel type='radio' control={<Radio />} name={`${question.id}`} value={`${option}`} label={option} onChange={handleInputChange} />
+                                                        </RadioGroup>
+                                                    </Grid>
+                                                </>
+                                            )
+                                        })
+                                        }
+                                    </>)
                             }
 
                         }

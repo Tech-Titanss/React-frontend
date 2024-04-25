@@ -5,6 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SurveyList from './Components/SurveyList.jsx';
 import AnswerForm from './Components/AnswerForm.jsx';
+import AnswerList from './Components/AnswerList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,12 @@ const router = createBrowserRouter([
         index: true
       },
       {
-        path: "/answerform/:id",
+        path: "answerform/:id",
         element: <AnswerForm />,
+      },
+      {
+        path: "answerlist/:id",
+        element: <AnswerList />,
       },
     ]
   }
