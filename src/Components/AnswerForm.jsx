@@ -78,7 +78,7 @@ const AnswerForm = () => {
 
             <Container>
                 <AppBar position="static" sx={{ backgroundColor: '#0079c2', height: 130 }}>
-                    <Typography variant="h1"
+                    <Typography variant="h2"
                         sx={{ textAlign: "center" }}>{survey.name}</Typography>
                 </AppBar>
                 <Typography variant="h4" sx={{ marginBottom: 4, marginTop: 4 }}>{survey.description}</Typography>
