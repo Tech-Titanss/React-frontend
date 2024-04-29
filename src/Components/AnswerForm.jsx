@@ -75,11 +75,12 @@ const AnswerForm = () => {
 
     return (
         <Paper sx={{ backgroundColor: grey[50] }} elevation={3}>
-            <AppBar position="static" sx={{ backgroundColor: '#0079c2', height: 130 }}>
-                <Typography variant="h1"
-                    sx={{ textAlign: "center" }}>{survey.name}</Typography>
-            </AppBar>
+
             <Container>
+                <AppBar position="static" sx={{ backgroundColor: '#0079c2', height: 130 }}>
+                    <Typography variant="h1"
+                        sx={{ textAlign: "center" }}>{survey.name}</Typography>
+                </AppBar>
                 <Typography variant="h4" sx={{ marginBottom: 4, marginTop: 4 }}>{survey.description}</Typography>
 
                 {loading ? <p>Loading</p> : (
@@ -94,15 +95,15 @@ const AnswerForm = () => {
                                         <>
                                             <Typography sx={{ marginTop: 2 }}>{question.questionText}</Typography>
                                             <RadioGroup name={`${question.id}`}>
-                                            {question.options.map((option, index) => {
+                                                {question.options.map((option, index) => {
 
-                                                return (
+                                                    return (
                                                         <Grid key={index}>
-                                                           
-                                                            <FormControlLabel control={<Radio  />} value={`${option}`} label={option} onChange={handleInputChange} />
+
+                                                            <FormControlLabel control={<Radio />} value={`${option}`} label={option} onChange={handleInputChange} />
                                                         </Grid>
-                                                )
-                                            })}
+                                                    )
+                                                })}
                                             </RadioGroup>
                                         </>)
                                 }
