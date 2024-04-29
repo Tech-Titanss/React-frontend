@@ -88,25 +88,22 @@ const AnswerForm = () => {
 
                         {survey.questions.map((question, index) => {
 
-                            if (question.type === "radio") {
+                            if (question.type === "radiobutton") {
                                 {
                                     return (
                                         <>
                                             <Typography sx={{ marginTop: 2 }}>{question.questionText}</Typography>
+                                            <RadioGroup name={`${question.id}`}>
                                             {question.options.map((option, index) => {
 
                                                 return (
-                                                    <>
-
                                                         <Grid key={index}>
-                                                            <RadioGroup >
-                                                                <FormControlLabel type='radio' control={<Radio />} name={`${question.id}`} value={`${option}`} label={option} onChange={handleInputChange} />
-                                                            </RadioGroup>
+                                                           
+                                                            <FormControlLabel control={<Radio  />} value={`${option}`} label={option} onChange={handleInputChange} />
                                                         </Grid>
-                                                    </>
                                                 )
-                                            })
-                                            }
+                                            })}
+                                            </RadioGroup>
                                         </>)
                                 }
 
