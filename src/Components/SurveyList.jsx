@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Container, TextField, Typography } from '@mui/material'
+import { Box, Container, TextField, Typography, AppBar } from '@mui/material'
 import SurveyCard from "./SurveyCard";
 import AnswerForm from "./AnswerForm";
 
@@ -26,8 +26,11 @@ const SurveyList = () => {
     }, [])
 
     return (
+
         <Container>
-            <Typography variant="h2" sx={{ marginBottom: 5 }}>Haaga-Helian kyselyt</Typography>
+            <AppBar position="static" sx={{ backgroundColor: '#0079c2', marginBottom: 5, paddingTop: 2, textAlign: 'center' }}>
+                <Typography variant="h2" sx={{ marginBottom: 5 }}>Haaga-Helian kyselyt</Typography>
+            </AppBar>
             {
                 surveys.map((survey, index) =>
                     <Box key={index} >
@@ -38,6 +41,7 @@ const SurveyList = () => {
 
             }
         </Container>
+
     )
 }
 
