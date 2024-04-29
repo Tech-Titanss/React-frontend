@@ -93,13 +93,11 @@ const AnswerForm = () => {
                                 {
                                     return (
                                         <>
-                                            <Typography sx={{ marginTop: 2 }}>{question.questionText}</Typography>
+                                            <Typography sx={{ marginTop: 2 }}>{question.questionText} (5=Täysin samaa mieltä, 1=Täysin eri mieltä)</Typography>
                                             <RadioGroup name={`${question.id}`}>
                                                 {question.options.map((option, index) => {
-
                                                     return (
                                                         <Grid key={index}>
-
                                                             <FormControlLabel control={<Radio />} value={`${option}`} label={option} onChange={handleInputChange} />
                                                         </Grid>
                                                     )
@@ -118,7 +116,11 @@ const AnswerForm = () => {
                                     </Grid>
                                 )
                             }
-                        })}
+                            //
+                        }
+
+                        )}
+
                         <Link to='/'>
                             <Button sx={{ marginTop: 5, marginBottom: 2 }} variant="contained" type='submit'>submit</Button>
                         </Link>
