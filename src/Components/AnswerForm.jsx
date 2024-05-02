@@ -10,11 +10,10 @@ const AnswerForm = () => {
     const [loading, setLoading] = useState(true);
     const { id } = useParams();
     const [answers, setAnswers] = useState({});
+
+
     const handleInputChange = (e) => {
-
-
         setAnswers({ ...answers, [e.target.name]: e.target.value });
-
     }
 
     const handleSubmit = async (e) => {
