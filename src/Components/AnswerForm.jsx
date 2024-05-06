@@ -91,7 +91,7 @@ const AnswerForm = () => {
                             if (question.type === "radiobutton") {
                                 {
                                     return (
-                                        <>
+                                        <div key={index}>
                                             <Typography sx={{ marginTop: 2 }}>{question.questionText} (5=Täysin samaa mieltä, 1=Täysin eri mieltä)</Typography>
                                             <RadioGroup name={`${question.id}`}>
                                                 {question.options.map((option, index) => {
@@ -102,7 +102,7 @@ const AnswerForm = () => {
                                                     )
                                                 })}
                                             </RadioGroup>
-                                        </>)
+                                        </div>)
                                 }
 
                             }
