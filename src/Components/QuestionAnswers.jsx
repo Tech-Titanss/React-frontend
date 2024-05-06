@@ -27,15 +27,30 @@ const QuestionAnswers = () => {
         }
 
         fetchQuestion(id);
-        console.log(question)
+
     }, [])
 
+    console.log("question", question)
 
     return (
-        <>
-            <h1>Moi</h1>
-
-        </>
+        <Paper>
+            <Container>
+                <Typography variant="h6">{question.questionText}</Typography>
+                {
+                    loading ? <p>Loading</p> : (
+                        <>
+                            {
+                                question.answer.map((answer, index) => {
+                                    return (
+                                        <p key={index}>{answer.answer}</p>
+                                    )
+                                })
+                            }
+                        </>
+                    )
+                }
+            </Container>
+        </Paper>
     )
 }
 

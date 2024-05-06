@@ -92,12 +92,12 @@ const AnswerForm = () => {
                                 {
                                     return (
                                         <div key={index}>
-                                            <Typography sx={{ marginTop: 2 }}>{question.questionText} (5=Täysin samaa mieltä, 1=Täysin eri mieltä)</Typography>
+                                            <Typography sx={{ marginTop: 2 }}>{question.questionText}</Typography>
                                             <RadioGroup name={`${question.id}`}>
                                                 {question.options.map((option, index) => {
                                                     return (
                                                         <Grid key={index}>
-                                                            <FormControlLabel control={<Radio />} value={`${option}`} label={option} onChange={handleInputChange} />
+                                                            <FormControlLabel control={<Radio />} value={`${option.optionText}`} label={option.optionText} onChange={handleInputChange} />
                                                         </Grid>
                                                     )
                                                 })}
@@ -118,7 +118,9 @@ const AnswerForm = () => {
                             //
                         }
 
-                        )}
+                        )
+
+                        }
 
                         <Link to='/'>
                             <Button sx={{ marginTop: 5, marginBottom: 2 }} variant="contained" type='submit'>submit</Button>

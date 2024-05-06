@@ -51,15 +51,15 @@ const AnswerList = () => {
                                         <Grid key={index} sx={{ marginBottom: 3, marginTop: 1 }}>
                                             <Typography variant="h6">{question.questionText}</Typography>
                                             <Link to={`questionanswers/${question.id}`}>
-                                                <Button sx={{ marginLeft: 2, marginBottom: 2 }} variant="contained">Näytä vastaukset</Button>
+                                                <Button variant="contained">Näytä vastaukset</Button>
                                             </Link>
-                                            {
+                                            {/**        {
                                                 question.answer.map((answer, index) => {
                                                     return (
                                                         <Typography key={index}>{answer.answer}</Typography>
                                                     )
                                                 })
-                                            }
+                                            }*/}
                                         </Grid>
                                     )
                                 })
