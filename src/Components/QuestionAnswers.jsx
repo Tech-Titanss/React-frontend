@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import { Typography, Container, Paper, Button, Grid, Divider } from "@mui/material";
 import { PieChart } from '@mui/x-charts/PieChart';
+import { Link } from "react-router-dom";
 import _ from 'lodash';
 
 const QuestionAnswers = () => {
@@ -10,12 +11,6 @@ const QuestionAnswers = () => {
     const [question, setQuestion] = useState([])
     const [chartData, setChartData] = useState([])
     const { id } = useParams();
-
-    const myData = [
-        { value: 10, label: 'series A' },
-        { value: 15, label: 'series B' },
-        { value: 20, label: 'series C' },
-    ];
 
     const fetchQuestion = async (id) => {
 
@@ -56,13 +51,9 @@ const QuestionAnswers = () => {
 
     useEffect(() => {
 
-        console.log(id)
-
         fetchQuestion(id);
 
     }, [])
-
-    console.log("question", question)
 
     return (
         <Paper>
@@ -73,8 +64,6 @@ const QuestionAnswers = () => {
                         <>
 
                             {question.type === "radiobutton" &&
-
-
                                 <PieChart
                                     series={[
                                         {
@@ -87,23 +76,20 @@ const QuestionAnswers = () => {
                             }
 
                             {question.type !== "radiobutton" &&
-
                                 <>
-
-                                {
-                                    question.answer.map((answer, index) => {
-                                        return (
-                                            <p key={index}>{answer.answer}</p>
-                                        )
-                                    })
-                                }
-
+                                    {
+                                        question.answer.map((answer, index) => {
+                                            return (
+                                                <p key={index}>{answer.answer}</p>
+                                            )
+                                        })
+                                    }
                                 </>
-
                             }
 
-
-
+                            <Link to={`/answerlist/${question.survey.id}`}>
+                                <Button sx={{ marginLeft: 2, marginBottom: 2 }} variant="contained">Takaisin kysymyslistaan</Button>
+                            </Link>
                         </>
                     )
                 }
