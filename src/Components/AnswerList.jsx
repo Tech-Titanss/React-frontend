@@ -53,7 +53,7 @@ const AnswerList = () => {
                                             <Link to={`questionanswers/${question.id}`}>
                                                 <Button variant="contained">Näytä vastaukset</Button>
                                             </Link>
-                                            {/**        {
+                                            {/**        { 
                                                 question.answer.map((answer, index) => {
                                                     return (
                                                         <Typography key={index}>{answer.answer}</Typography>

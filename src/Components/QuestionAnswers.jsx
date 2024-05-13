@@ -65,7 +65,7 @@ const QuestionAnswers = () => {
     console.log("question", question)
 
     return (
-        <Paper>
+        <Paper sx={{ paddingBottom: 2 }}>
             <Container>
                 <Typography variant="h6">{question.questionText}</Typography>
                 {
@@ -90,13 +90,13 @@ const QuestionAnswers = () => {
 
                                 <>
 
-                                {
-                                    question.answer.map((answer, index) => {
-                                        return (
-                                            <p key={index}>{answer.answer}</p>
-                                        )
-                                    })
-                                }
+                                    {
+                                        question.answer.map((answer, index) => {
+                                            return (
+                                                <Grid key={index} sx={{ marginLeft: 10, marginBottom: 0 }}>{answer.answer}</Grid>
+                                            )
+                                        })
+                                    }
 
                                 </>
 
